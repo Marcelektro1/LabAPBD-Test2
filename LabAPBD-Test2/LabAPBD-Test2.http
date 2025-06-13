@@ -19,11 +19,11 @@ Content-Type: application/json
 
 {
   "quantity": 700,
-  "species": "Quercus robur",
-  "nursery": "Green Forest Nursery",
+  "species": "Some Species",
+  "nursery": "Some Nursery",
   "responsible": [
     {
-      "employeeId": 1,
+      "employeeId": 5,
       "role": "Supervisor"
     },
     {

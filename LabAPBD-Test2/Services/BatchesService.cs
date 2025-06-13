@@ -35,7 +35,7 @@ public class BatchesService(DatabaseContext context) : IBatchesService
             var missingEmps = empIds.Cast<int>().Except(hasEmps).ToList();
             if (missingEmps.Any())
             {
-                return ServiceResult<object>.FailureResult("EMPLOYEE_NOT_FOUND", "Employee by id " + missingEmps + " could not be found");
+                return ServiceResult<object>.FailureResult("EMPLOYEE_NOT_FOUND", "Employee by id " + string.Join(",", missingEmps) + " could not be found");
             }
 
             var newBatch = new SeedlingBatch
