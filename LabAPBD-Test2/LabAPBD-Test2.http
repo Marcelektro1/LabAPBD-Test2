@@ -14,7 +14,7 @@ Accept: application/json
 
 # Task 2
 
-POST {{hostAddr}}/api/batches
+POST {{hostAddr}}/api/Batches
 Content-Type: application/json
 
 {
