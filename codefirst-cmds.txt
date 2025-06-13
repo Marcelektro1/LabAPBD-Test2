@@ -1,0 +1,24 @@
+How to use:
+
+1. Install the tool, if not done yet
+   
+    dotnet tool install --global dotnet-ef
+
+
+2. Make sure you're in the project dir
+
+    cd ./LabAPBD-Test2/
+
+
+3. Create frst migration
+
+    dotnet-ef migrations add Init
+   
+   
+4. Run the migration instructions, and execute SQL commands
+
+    dotnet-ef database update
+
+
+This will create the tables and relations based on models supplied in DbContext.
+Migrations must remain in the project repo.
