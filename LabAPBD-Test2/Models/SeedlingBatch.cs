@@ -23,4 +23,6 @@ public class SeedlingBatch
 
     public Nursery Nursery { get; set; }
     public TreeSpecies TreeSpecies { get; set; }
+    
+    public IEnumerable<Responsible> Responsibles { get; set; }
 }

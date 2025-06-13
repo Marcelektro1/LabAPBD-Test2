@@ -19,7 +19,7 @@ public class BatchesController(IBatchesService batchesService) : ControllerBase
             return res.ErrorCode switch
             {
                 "SPECIES_NOT_FOUND" => NotFound(res.Message),
-                "BATCH_NOT_FOUND" => NotFound(res.Message),
+                "NURSERY_NOT_FOUND" => NotFound(res.Message),
                 "EMPLOYEE_NOT_FOUND" => NotFound(res.Message),
                 _ => BadRequest(res.ErrorCode + ": " + res.Message)
             };

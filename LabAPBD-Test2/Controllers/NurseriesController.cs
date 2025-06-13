@@ -22,7 +22,7 @@ public class NurseriesController(INurseriesService nurseriesService) : Controlle
             };
         }
         
-        return Ok(res);
+        return Ok(res.Data);
     }
     
 }
