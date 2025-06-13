@@ -1,4 +1,5 @@
 using LabAPBD_Test2.Data;
+using LabAPBD_Test2.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace LabAPBD_Test2;
@@ -21,8 +22,8 @@ public static class Program
         );
 
         // Added: Dependency injection
-        /*builder.Services.AddScoped<IPrescriptionsService, PrescriptionsService>();
-        builder.Services.AddScoped<IPatientsService, PatientsService>();*/
+        builder.Services.AddScoped<INurseriesService, NurseriesService>();
+        builder.Services.AddScoped<IBatchesService, BatchesService>();
 
         var app = builder.Build();
 

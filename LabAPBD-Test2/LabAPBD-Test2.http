@@ -1,6 +1,37 @@
 @hostAddr = http://localhost:5079
 
-GET {{hostAddr}}/weatherforecast/
+@nurseryId = 1
+
+###
+
+# Task 1
+
+GET {{hostAddr}}/api/Nurseries/{{nurseryId}}/batches/
 Accept: application/json
 
 ###
+
+
+# Task 2
+
+POST {{hostAddr}}/api/batches
+Content-Type: application/json
+
+{
+  "quantity": 700,
+  "species": "Quercus robur",
+  "nursery": "Green Forest Nursery",
+  "responsible": [
+    {
+      "employeeId": 1,
+      "role": "Supervisor"
+    },
+    {
+      "employeeId": 3,
+      "role": "Planter"
+    }
+  ]
+}
+
+###
+

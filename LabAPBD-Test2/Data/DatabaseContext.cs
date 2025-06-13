@@ -1,14 +1,15 @@
+using LabAPBD_Test2.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace LabAPBD_Test2.Data;
 
 public class DatabaseContext : DbContext
 {
-    // public DbSet<Medicament> Medicaments { get; set; }
-    // public DbSet<PrescriptionMedicament> PrescriptionMedicaments { get; set; }
-    // public DbSet<Prescription> Prescriptions { set; get; }
-    // public DbSet<Doctor> Doctors { get; set; }
-    // public DbSet<Patient> Patients { get; set; }
+    public DbSet<Nursery> Nurseries { get; set; }
+    public DbSet<SeedlingBatch> SeedlingBatches { get; set; }
+    public DbSet<TreeSpecies> TreeSpecies { set; get; }
+    public DbSet<Responsible> Responsibles { get; set; }
+    public DbSet<Employee> Employees { get; set; }
     
     protected DatabaseContext()
     {
@@ -21,36 +22,61 @@ public class DatabaseContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
-        // modelBuilder.Entity<Doctor>().HasData(new List<Doctor>
-        // {
-        //     new() { IdDoctor = 1, FirstName = "John", LastName = "Doe", Email = "johndoe@gmail.com" },
-        //     new() { IdDoctor = 2, FirstName = "Steve", LastName = "Jobs", Email = "stevejobs@gmail.com" }
-        // });
-        //
-        // modelBuilder.Entity<Patient>().HasData(new List<Patient>
-        // {
-        //     new() { IdPatient = 1, FirstName = "Alice", LastName = "Smith", Date = new DateTime(1990, 5, 20) },
-        //     new() { IdPatient = 2, FirstName = "Bob", LastName = "Brown", Date = new DateTime(1985, 8, 15) }
-        // });
-        //
-        // modelBuilder.Entity<Medicament>().HasData(new List<Medicament>
-        // {
-        //     new() { IdMedicament = 1, Name = "Aspirin", Description = "Pain reliever", Type = "Tablet" },
-        //     new() { IdMedicament = 2, Name = "Penicillin", Description = "Antibiotic", Type = "Injection" }
-        // });
-        //
-        // modelBuilder.Entity<Prescription>().HasData(new List<Prescription>
-        // {
-        //     new() { IdPrescription = 1, Date = new DateTime(2024, 6, 1), DueDate = new DateTime(2024, 6, 15), IdPatient = 1, IdDoctor = 1 },
-        //     new() { IdPrescription = 2, Date = new DateTime(2024, 6, 2), DueDate = new DateTime(2024, 6, 16), IdPatient = 2, IdDoctor = 2 }
-        // });
-        //
-        // modelBuilder.Entity<PrescriptionMedicament>().HasData(new List<PrescriptionMedicament>
-        // {
-        //     new() { IdMedicament = 1, IdPrescription = 1, Dose = 2 },
-        //     new() { IdMedicament = 2, IdPrescription = 1, Dose = 1 },
-        //     new() { IdMedicament = 1, IdPrescription = 2, Dose = 1 }
-        // });
+        modelBuilder.Entity<Nursery>().HasData(new List<Nursery>
+        {
+            new() { NurseryId = 1, EstablishedDate = new DateTime(2024, 01, 20), Name = "Some Nursery"},
+            new() { NurseryId = 2, EstablishedDate = new DateTime(2024, 04, 10), Name = "Othre Nursery"},
+        });
+
+        modelBuilder.Entity<TreeSpecies>().HasData(new List<TreeSpecies>
+        {
+            new() { SpeciesId = 1, GrowthTimeInYears = 10, LatinName = "Some Species" },
+            new() { SpeciesId = 2, GrowthTimeInYears = 20, LatinName = "Othre Species" }
+        });
+
+        modelBuilder.Entity<Employee>().HasData(new List<Employee>
+        {
+            new() { EmployeeId = 1, FirstName = "Mary", LastName = "Smith", HireDate = new DateTime(2005, 10, 17)},
+            new() { EmployeeId = 2, FirstName = "John", LastName = "Dough", HireDate = new DateTime(2005, 10, 18)}
+        });
+
+        modelBuilder.Entity<SeedlingBatch>().HasData(new List<SeedlingBatch>
+        {
+            new()
+            {
+                BatchId = 1,
+                NurseryId = 1,
+                SpeciesId = 1,
+                Quantity = 10,
+                SownDate = new DateTime(2009, 10, 10),
+                ReadyDate = null
+            },
+            new ()
+            {
+                BatchId = 2,
+                NurseryId = 2,
+                SpeciesId = 2,
+                Quantity = 20,
+                SownDate = new DateTime(2009, 10, 11),
+                ReadyDate = new DateTime(2014, 10, 17)
+            }
+        });
+
+        modelBuilder.Entity<Responsible>().HasData(new List<Responsible>
+        {
+            new()
+            {
+                BatchId = 1,
+                EmployeeId = 1,
+                Role = "ADMIN"
+            },
+            new()
+            {
+                BatchId = 2,
+                EmployeeId = 2,
+                Role = "MANAGER"
+            }
+        });
 
     }
     
